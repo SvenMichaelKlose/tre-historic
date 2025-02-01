@@ -5,7 +5,7 @@
       &rest &body &optional &key))
 
 (defconstant +cl-core-symbols+
-    '(backquote quasiquote quasiquote-splice
+    '(backquote unquote unquote-splice
       brackets braces))
 
 (defconstant +cl-function-imports+

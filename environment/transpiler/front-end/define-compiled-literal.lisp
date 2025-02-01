@@ -17,5 +17,5 @@
                 ,@(when declaration
                      `((push (~> ,declaration !)
                              (compiled-decls))))
-                (push `(= ,,! ,(… 'quasiquote initializer))
+                (push `(= ,,! ,(… 'unquote initializer))
                       (compiled-inits)))))))

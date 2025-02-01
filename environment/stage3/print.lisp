@@ -1,7 +1,7 @@
 (const *printer-abbreviations* '((quote              "'")
                                  (backquote          "`")
-                                 (quasiquote         ",")
-                                 (quasiquote-splice  ",@")))
+                                 (unquote         ",")
+                                 (unquote-splice  ",@")))
 
 (var *print-automatic-newline?* t)
 (var *always-print-package-names?* nil)

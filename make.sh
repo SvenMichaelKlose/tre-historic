@@ -66,6 +66,8 @@ genboot)
 reset)
     echo "Resetting boot code from repository…"
     git checkout -- boot-common.lisp
+    sed -e s/QUASIQUOTE/UNQUOTE/g <boot-common.lisp >newboot.lisp
+    mv newboot.lisp boot-common.lisp
 	;;
 
 boot)

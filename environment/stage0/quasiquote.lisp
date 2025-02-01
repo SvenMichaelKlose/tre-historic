@@ -1,21 +1,21 @@
-;;; Quasiquotes outside backquotes are used to execute code in the host
-;;; environment at compile-time.
-
-(%fn %quasiquote-expand (x)
+(%fn %unquote-expand (x)
   (?
-    (atom x)                     x
-    (atom x.)                    (. x. (%quasiquote-expand .x))
-    (eq x.. 'quote)              (. x. (%quasiquote-expand .x))
-    (eq x.. 'backquote)          (. x. (%quasiquote-expand .x))
-    (eq x.. 'quasiquote)         (. (eval (macroexpand (car (cdr x.))))
-                                    (%quasiquote-expand .x))
-    (eq x.. 'quasiquote-splice)  (append (eval (macroexpand (car (cdr x.))))
-                                         (%quasiquote-expand .x))
-    (. (%quasiquote-expand x.)
-       (%quasiquote-expand .x))))
+    (atom x)                  x
+    (atom x.)                 (. x. (%unquote-expand .x))
+    (eq x.. 'quote)           (. x. (%unquote-expand .x))
+    (eq x.. 'backquote)       (. x. (%unquote-expand .x))
+    (eq x.. 'unquote)         (. (eval (macroexpand (car (cdr x.))))
+                                 (%unquote-expand .x))
+    (eq x.. 'unquote-splice)  (append (eval (macroexpand (car (cdr x.))))
+                                      (%unquote-expand .x))
+    (. (%unquote-expand x.)
+       (%unquote-expand .x))))
 
-(%fn quasiquote-expand (x)
-  ; TODO: Be the hero by finding out why this function cannot be removed. (pixel)
-  (car (%quasiquote-expand (list x))))
+(%fn unquote-expand (x)
+  (car (%unquote-expand (list x))))
 
-(%defvar *quasiquote-expand* #'quasiquote-expand)
+(%fn unquote-expand (x)
+  (unquote-expand x))
+
+(%defvar *unquote-expand* #'unquote-expand)
+(%defvar *unquote-expand* #'unquote-expand)

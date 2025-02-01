@@ -10,10 +10,10 @@
   (?
     (atom x)                     x
     (atom x.)                    (. x. (%macroexpand-backquote .x))
-    (eq x.. 'quasiquote)         (. (. 'quasiquote
+    (eq x.. 'unquote)         (. (. 'unquote
                                        (%macroexpand (cdr x.)))
                                     (%macroexpand-backquote .x))
-    (eq x.. 'quasiquote-splice)  (. (. 'quasiquote-splice
+    (eq x.. 'unquote-splice)  (. (. 'unquote-splice
                                        (%macroexpand (cdr x.)))
                                     (%macroexpand-backquote .x))
     (. (%macroexpand-backquote x.)
@@ -37,8 +37,8 @@
                                    (apply *macrocall* (list x)))
     (eq x. 'quote)              x
     (eq x. 'backquote)          (. 'backquote (apply *macroexpand-backquote* (list .x)))
-    (eq x. 'quasiquote)         (. 'quasiquote (%macroexpand .x))
-    (eq x. 'quasiquote-splice)  (. 'quasiquote-splice (%macroexpand .x))
+    (eq x. 'unquote)         (. 'unquote (%macroexpand .x))
+    (eq x. 'unquote-splice)  (. 'unquote-splice (%macroexpand .x))
     (. (%macroexpand x.)
        (%macroexpand-rest .x))))
 

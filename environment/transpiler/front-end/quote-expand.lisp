@@ -1,6 +1,6 @@
-(fn any-quasiquote? (x)
-  (| (quasiquote? x)
-     (quasiquote-splice? x)))
+(fn any-unquote? (x)
+  (| (unquote? x)
+     (unquote-splice? x)))
 
 (fn quote-expand (x)
   (with (atomic
@@ -13,13 +13,13 @@
               `(. ,(static _.)
                   ,(static ._))]
          qq
-           [? (any-quasiquote? (cadr _.))
+           [? (any-unquote? (cadr _.))
               `(. ,(backq (cadr _.))
                   ,(backq ._))
               `(. ,(cadr _.)
                   ,(backq ._))]
          qqs
-           [? (any-quasiquote? (cadr _.))
+           [? (any-unquote? (cadr _.))
               (error "Illegal ~A as argument to ,@" (cadr _.))
               (with-gensym g
                 ; TODO: Make TRANSPILER-MACROEXPAND work and use LET.
@@ -34,8 +34,8 @@
            [?
              (atom _)  (atomic _)
              (pcase _.
-               quasiquote?         (qq _)
-               quasiquote-splice?  (qqs _)
+               unquote?         (qq _)
+               unquote-splice?  (qqs _)
                atom `(. ,(atomic _.)
                         ,(backq ._))
                `(. ,(backq _.)

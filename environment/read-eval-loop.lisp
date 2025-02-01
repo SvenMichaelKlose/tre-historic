@@ -4,6 +4,6 @@
     (format out "* ~F")
     (late-print (eval (refine (compose #'dot-expand
                                        #'macroexpand
-                                       #'quasiquote-expand)
+                                       #'unquote-expand)
                               (read in)))
                 out)))

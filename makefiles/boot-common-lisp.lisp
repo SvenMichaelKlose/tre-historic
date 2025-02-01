@@ -6,7 +6,7 @@
 (const +core-variables+
        '(*universe* *variables* *functions*
          *environment-path* *environment-filenames*
-         *macroexpand* *quasiquote-expand* *dot-expand*
+         *macroexpand* *unquote-expand* *dot-expand*
          *package* *keyword-package*
          *pointer-size* *launchfile*
          *assert?* *targets*

@@ -1,6 +1,6 @@
 (progn
   ,@(@ [`(def-head-predicate ,_)]
-       '(identity quote backquote quasiquote quasiquote-splice)))
+       '(identity quote backquote unquote unquote-splice)))
 
 (fn sharp-quote? (x)
   (& (function-expr? x)

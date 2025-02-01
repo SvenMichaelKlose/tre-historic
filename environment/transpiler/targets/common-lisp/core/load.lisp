@@ -4,7 +4,7 @@
        (%load-r s))))
 
 (fn %expand (x)
-  (!= (quasiquote-expand (macroexpand (dot-expand x)))
+  (!= (unquote-expand (macroexpand (dot-expand x)))
     (? (equal x !)
        x
        (%expand !))))

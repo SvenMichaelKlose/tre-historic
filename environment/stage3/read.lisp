@@ -151,7 +151,7 @@
            0))))
 
 (fn token-is-quote? (x)
-  (in? x :quote :backquote :quasiquote :quasiquote-splice))
+  (in? x :quote :backquote :unquote :unquote-splice))
 
 (fn %read-closing-parens? (x)
   (in? x :parenthesis-close :bracket-close :brace-close))
@@ -275,8 +275,8 @@
                       #\,  (? (ahead? #\@ str)
                               (progn
                                 (read-char str)
-                                :quasiquote-splice)
-                              :quasiquote)
+                                :unquote-splice)
+                              :unquote)
                       #\#  (case (read-char str)
                              #\\  :char
                              #\x  :hexnum

@@ -1,7 +1,7 @@
 (define-transpiler-end :frontend
     :frontend-input             #'identity
     :dot-expand                 #'dot-expand
-    :quasiquote-expand          #'quasiquote-expand
+    :unquote-expand          #'unquote-expand
     :transpiler-macroexpand     #'transpiler-macroexpand
     :compiler-macroexpand       #'compiler-macroexpand
     :quote-expand               #'quote-expand

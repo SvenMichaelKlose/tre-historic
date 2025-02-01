@@ -10,7 +10,7 @@
 (var *print-definitions?* nil)
 (var *default-stream-tabsize* 8)
 
-(var *quasiquote-expand* nil)
+(var *unquote-expand* nil)
 (var *dot-expand* nil)
 
 (var *argv* *posix-argv*)
